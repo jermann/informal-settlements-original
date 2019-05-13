@@ -1,5 +1,5 @@
 %% Defining experiment params 
-testcities = {'Mumbai','Capetownsmall','Lower','Kibera','Kianda', 'AlGeneina','ElDaein','Makoko','Medellin'};
+testcities = {'Mumbai','Capetownsmall','Lower','Kibera','Kianda', 'ElGeneina','ElDaein','Makoko','Medellin'};
 kenya.name = 'Kenya';
 kenya.cities = {'Lower','Kibera' ,'Kianda'};
 kenya.testcities = testcities;
@@ -9,8 +9,8 @@ kenya.classremove = {[], [], []};
 kenya.ccf = {};
 
 sudan.name = 'Sudan';
-sudan.cities = {'AlGeneina','ElDaein'};
-sudan.testcities =testcities;
+sudan.cities = {'ElGeneina','ElDaein'};
+sudan.testcities = testcities;
 sudan.classmaps = {[];[]};
 sudan.multiclass = {0,0};
 sudan.classremove = {[];[]};
@@ -62,7 +62,7 @@ cmap = [0 1 ; 0 1; 0 1];
 server = '/Users/alexander/git/informal-settlements-original/';
 nCountries= length(data.countries);
 %% Set the things that you would like to do
-create_binary_mask =0;
+create_binary_mask = 1; %AJ: 0 before
 train_model =  1;
 test_model = 1;
 classify_image = 1;
