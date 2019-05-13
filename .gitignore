@@ -1,0 +1,11 @@
+# Ignore data
+Training_sets_and_ground_truth/
+
+# Ignore pycache
+**/__pycache__/*
+
+# Ignore train logs
+**/log/*
+
+# Ignore .DS_Store
+**/.DS_Store

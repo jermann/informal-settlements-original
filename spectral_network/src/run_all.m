@@ -1,5 +1,5 @@
 %% Defining experiment params 
-testcities = {'Mumbai','Capetownsmall','Lower','Kibera','Kianda', 'AlGeneina','ElDaein','Mokako','Medellin'};
+testcities = {'Mumbai','Capetownsmall','Lower','Kibera','Kianda', 'AlGeneina','ElDaein','Makoko','Medellin'};
 kenya.name = 'Kenya';
 kenya.cities = {'Lower','Kibera' ,'Kianda'};
 kenya.testcities = testcities;
@@ -33,7 +33,7 @@ southafrica.classremove = {[],[]};
 southafrica.ccf = {};
 
 nigeria.name = 'Nigeria';
-nigeria.cities = {'Mokako'};
+nigeria.cities = {'Makoko'};
 nigeria.testcities =testcities;
 nigeria.classmaps = {[]};
 nigeria.multiclass = {0};
@@ -59,14 +59,14 @@ classes = 2;
 method= 'spec2inf';
 lbl = {'Environment', 'Informal'};
 cmap = [0 1 ; 0 1; 0 1];
-server = '/Users/bradley/Documents/Projects/Team2_FDL/synthesis-generate-spectrum/ccfs/';
+server = '/Users/alexander/git/informal-settlements-original/';
 nCountries= length(data.countries);
 %% Set the things that you would like to do
 create_binary_mask =0;
 train_model =  1;
-test_model =1;
-classify_image =1;
-create_image =1;
+test_model = 1;
+classify_image = 1;
+create_image = 1;
 calc_meanIOU = 1;
 create_all =0;
 ntrees = 15;

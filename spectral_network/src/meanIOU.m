@@ -28,7 +28,7 @@ function meanIOU2(country,source,city,testcity,type,method, server)
     ft  =fullfile(load_inf,country,city,source,type,ext);
     image_ground_truth=  double(imread(fgt)); 
     
-%     server = '/Users/bradley/Documents/Projects/Team2_FDL/synthesis-generate-spectrum/';
+%     server = '/Users/alexander/git/informal-settlements-original/';
     base = strcat(server,'predictions/');
     
     full = strcat(base,country,'/',city,'/images/');
