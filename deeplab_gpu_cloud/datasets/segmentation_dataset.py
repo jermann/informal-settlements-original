@@ -133,8 +133,28 @@ _LOWER_512_INFORMATION = DatasetDescriptor(
 
 _KIBERA_512_INFORMATION = DatasetDescriptor(
     splits_to_sizes={
-        'train': 250,  # num of samples in images/training
-        'val': 62,  # num of samples in images/validation
+        'train': 250,  # num of samples in images/training # used to be 250
+        'val': 62,  # num of samples in images/validation # used to be 62
+    },
+    num_classes=2,
+    ignore_label=255, 
+)
+
+# AJ
+_KIBERA_512AJ_INFORMATION = DatasetDescriptor(
+    splits_to_sizes={
+        'train': 280,  # num of samples in images/training
+        'val': 32,  # num of samples in images/validation
+    },
+    num_classes=2,
+    ignore_label=255, 
+)
+
+# AJ
+_KIBERA_TILES_INFORMATION = DatasetDescriptor(
+    splits_to_sizes={
+        'train': 24,  # num of samples in images/training
+        'val': 6,  # num of samples in images/validation
     },
     num_classes=2,
     ignore_label=255, 
@@ -284,6 +304,7 @@ _MAKOKO_256_INFORMATION = DatasetDescriptor(
     ignore_label=255, 
 )
 
+# AJ: added kibera tiles
 _DATASETS_INFORMATION = {
     'cityscapes': _CITYSCAPES_INFORMATION,
     'pascal_voc_seg': _PASCAL_VOC_SEG_INFORMATION,
@@ -292,6 +313,8 @@ _DATASETS_INFORMATION = {
     'el_daien_512': _EL_DAIEN_512_INFORMATION,
     'al_geneina_512': _Al_GENEINA_512_INFORMATION,
     'kibera_512':_KIBERA_512_INFORMATION,
+    'kibera_512AJ':_KIBERA_512AJ_INFORMATION,
+    'kibera_tiles':_KIBERA_TILES_INFORMATION,
     'lower_512':_LOWER_512_INFORMATION,
     'all_512':_ALL_512_INFORMATION,
     'all_without_sudan_512':_ALL_WITHOUT_SUDAN_512_INFORMATION,

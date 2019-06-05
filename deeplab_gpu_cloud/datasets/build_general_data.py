@@ -20,7 +20,7 @@ The dataset is expected to have the following directory structure:
 
 Image folder:
   ./<DATASET>/images
-  
+
 Semantic segmentation annotations:
   ./<DATASET>/labels
 
@@ -49,22 +49,22 @@ import tensorflow as tf
 FLAGS = tf.app.flags.FLAGS
 
 tf.app.flags.DEFINE_string('image_folder',
-                           './inf_set/images',
+                           './kibera_512AJ/images',
                            'Folder containing images.')
 
 tf.app.flags.DEFINE_string(
     'semantic_segmentation_folder',
-    './inf_set/labels',
+    './kibera_512AJ/labels',
     'Folder containing semantic segmentation annotations.')
 
 tf.app.flags.DEFINE_string(
     'list_folder',
-    './inf_set',
+    './kibera_512AJ',
     'Folder containing lists for training and validation')
 
 tf.app.flags.DEFINE_string(
     'output_dir',
-    './inf_set/tfrecord',
+    './kibera_512AJ/tfrecord',
     'Path to save converted SSTable of TensorFlow examples.')
 
 
@@ -82,6 +82,7 @@ def _convert_dataset(dataset_split):
   """
   dataset = os.path.basename(dataset_split)[:-4]
   sys.stdout.write('Processing ' + dataset)
+  # print("Processing " + dataset) # AJ
   filenames = [x.strip('\n') for x in open(dataset_split, 'r')]
   num_images = len(filenames)
   num_per_shard = int(math.ceil(num_images / float(_NUM_SHARDS)))
@@ -123,6 +124,7 @@ def _convert_dataset(dataset_split):
 
 def main(unused_argv):
   dataset_splits = tf.gfile.Glob(os.path.join(FLAGS.list_folder, '*.txt'))
+  print "Dataset Splits: %s" % dataset_splits
   for dataset_split in dataset_splits:
     _convert_dataset(dataset_split)
 

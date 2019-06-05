@@ -1,5 +1,6 @@
 %% Defining experiment params 
 testcities = {'Mumbai','Capetownsmall','Lower','Kibera','Kianda', 'ElGeneina','ElDaein','Makoko','Medellin'};
+
 kenya.name = 'Kenya';
 kenya.cities = {'Lower','Kibera' ,'Kianda'};
 kenya.testcities = testcities;
@@ -26,7 +27,7 @@ india.ccf = {};
 
 southafrica.name = 'Southafrica';
 southafrica.cities = {'Capetownsmall'};
-southafrica.testcities =testcities;
+southafrica.testcities = testcities;
 southafrica.classmaps = {[],[]};
 southafrica.multiclass = {0,0};
 southafrica.classremove = {[],[]};
@@ -34,7 +35,7 @@ southafrica.ccf = {};
 
 nigeria.name = 'Nigeria';
 nigeria.cities = {'Makoko'};
-nigeria.testcities =testcities;
+nigeria.testcities = testcities;
 nigeria.classmaps = {[]};
 nigeria.multiclass = {0};
 nigeria.classremove = {[]};
@@ -42,7 +43,7 @@ nigeria.ccf = {};
 
 colombia.name = 'Colombia';
 colombia.cities = {'Medellin'};
-colombia.testcities =testcities;
+colombia.testcities = testcities;
 colombia.classmaps = {[]};
 colombia.multiclass = {0};
 colombia.classremove = {[]};
@@ -61,16 +62,18 @@ lbl = {'Environment', 'Informal'};
 cmap = [0 1 ; 0 1; 0 1];
 server = '/Users/alexander/git/informal-settlements-original/';
 nCountries= length(data.countries);
+
 %% Set the things that you would like to do
-create_binary_mask = 1; %AJ: 0 before
-train_model =  1;
+create_binary_mask = 0; %AJ: 0 before
+train_model =  1; % don't forget
 test_model = 1;
 classify_image = 1;
-create_image = 1;
-calc_meanIOU = 1;
-create_all =0;
+create_image = 0;
+calc_meanIOU = 0;
+create_all = 0;
 ntrees = 15;
 predict = 1; % Train and test on same city
+
 %% Run experiment
 if create_binary_mask
     for ii=1:nCountries

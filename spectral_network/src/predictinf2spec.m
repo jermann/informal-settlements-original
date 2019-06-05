@@ -1,14 +1,14 @@
 function predictinf2spec(CCF,country,source,city,testcity,type,method,multiclass, class_map,classes_remove,ntrees,server, predict_data)
 
 % Performs a prediction on the given test set and saves the metrics: IOU,
-% classification percentage of informal, classification percentage of 
-% environment. 
+% classification percentage of informal, classification percentage of
+% environment.
 
 % Inputs
-% multiclass - int [1 = true, 0 = false] If multiclass, will relabel all labels to be either 
+% multiclass - int [1 = true, 0 = false] If multiclass, will relabel all labels to be either
 %               1 for informal or 0 for everything else. Specified by
 %               class map
-% country - str of country name 
+% country - str of country name
 % source - str of either 'S2' or 'DG'
 % city - str of city name
 % testcity - the pre-trained citymodel used for testing
@@ -19,12 +19,12 @@ function predictinf2spec(CCF,country,source,city,testcity,type,method,multiclass
 % classes_remove - array of classes to be removed.
 % ntrees - int- used for retriving the right model
 % predict - bool - to avoid testing and training on the same data, when
-% this flag is activated it automatically performs the prediction and 
+% this flag is activated it automatically performs the prediction and
 % will avoid the prediction during the second function call in run
-% experiments. 
+% experiments.
 % predict_data - Matrix - Array of data from splitting the training and
 % test set. removes the need to have to reload dataset when training on the
-% same model. 
+% same model.
 
 if strcmp(testcity,city)
     if exist('predict_data', 'var')
@@ -123,4 +123,3 @@ end
 fclose(fileID);
 
 end
-

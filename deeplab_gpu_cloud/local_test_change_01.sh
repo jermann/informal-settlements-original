@@ -42,7 +42,9 @@ set -e
 cd ..
 
 # Update PYTHONPATH.
+echo $PYTHONPATH
 export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
+echo $PYTHONPATH
 
 # Set up the working environment.
 CURRENT_DIR=$(pwd)
@@ -55,10 +57,14 @@ DATASET_TF_RECORD="${WORK_DIR}/${DATASET_DIR}/${DATASET}/tfrecord"
 # Run model_test first to make sure the PYTHONPATH is correctly set.
 python "${WORK_DIR}"/model_test.py -v
 
+echo "Model Test ran succesfully"
+
 # Go to datasets folder and convert the dataset.
 
 cd "${WORK_DIR}/${DATASET_DIR}"
 sh convert_general.sh "${DATASET}"
+
+echo "Convert General ran succesfully"
 
 # Go back to original directory.
 cd "${CURRENT_DIR}"
@@ -86,6 +92,7 @@ cd "${CURRENT_DIR}"
 
 # Train the model.
 # initialize_last_layer=false only if finetuning on another dataset with a different number of classes
+echo "Possible Mistake 1"
 python "${WORK_DIR}"/train.py \
   --logtostderr \
   --num_clones=${NUM_GPU} \
@@ -108,6 +115,7 @@ python "${WORK_DIR}"/train.py \
   --dataset="${DATASET}" \
   --dataset_dir="${DATASET_TF_RECORD}"
 
+echo "Possible Mistake 2"
 # Run evaluation. This performs eval over the full val split.
 python "${WORK_DIR}"/eval.py \
   --logtostderr \
@@ -127,27 +135,29 @@ python "${WORK_DIR}"/eval.py \
   --max_number_of_evaluations=1
 
 # Visualize the results.
-python "${WORK_DIR}"/vis.py \
-  --logtostderr \
-  --vis_split="val" \
-  --model_variant="xception_65" \
-  --atrous_rates=6 \
-  --atrous_rates=12 \
-  --atrous_rates=18 \
-  --output_stride=16 \
-  --decoder_output_stride=4 \
-  --vis_crop_size=513 \
-  --vis_crop_size=513 \
-  --checkpoint_dir="${TRAIN_LOGDIR}" \
-  --vis_logdir="${VIS_LOGDIR}" \
-  --dataset="${DATASET}" \
-  --dataset_dir="${DATASET_TF_RECORD}" \
-  --max_number_of_iterations=1
+#python "${WORK_DIR}"/vis.py \
+#  --logtostderr \
+#  --vis_split="val" \
+#  --model_variant="xception_65" \
+#  --atrous_rates=6 \
+#  --atrous_rates=12 \
+#  --atrous_rates=18 \
+#  --output_stride=16 \
+#  --decoder_output_stride=4 \
+#  --vis_crop_size=513 \
+#  --vis_crop_size=513 \
+#  --checkpoint_dir="${TRAIN_LOGDIR}" \
+#  --vis_logdir="${VIS_LOGDIR}" \
+#  --dataset="${DATASET}" \
+#  --dataset_dir="${DATASET_TF_RECORD}" \
+#  --max_number_of_iterations=1
 
 # Export the trained checkpoint.
+echo "Possible Mistake 3"
 CKPT_PATH="${TRAIN_LOGDIR}/model.ckpt-${NUM_ITERATIONS}"
 EXPORT_PATH="${EXPORT_DIR}/frozen_inference_graph.pb"
 
+echo "Possible Mistake 4"
 python "${WORK_DIR}"/export_model.py \
   --logtostderr \
   --checkpoint_path="${CKPT_PATH}" \

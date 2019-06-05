@@ -22,13 +22,15 @@
 #   sh ./convert_general.sh
 #
 
-if [[ "$#" -ne 1 ]] ; then
-    echo 'Usage: sh ./convert_general.sh <DATASET>'
-    exit 1
-fi
+#if [[ "$#" -ne 1 ]] ; then
+#    echo 'Usage: sh ./convert_general.sh <DATASET>'
+#    exit 1
+#fi
 
 # Set the dataset
 DATASET=$1
+
+echo "The Dataset that convert general is considering is:  ${DATASET}"
 
 # Exit immediately if a command exits with a non-zero status.
 set -e
@@ -58,3 +60,5 @@ python ./build_general_data.py \
   --list_folder="${LIST_FOLDER}" \
   --image_format="jpg" \
   --output_dir="${OUTPUT_DIR}"
+  
+echo "Convert general done...s"
