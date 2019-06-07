@@ -1,6 +1,15 @@
 # Ignore data
 Training_sets_and_ground_truth/
 
+# Ignore predictions
+predictions/
+
+# Ignore pycache files
+*.pyc
+
+# Ignore Backups
+backups/
+
 # Ignore pycache
 **/__pycache__/*
 
